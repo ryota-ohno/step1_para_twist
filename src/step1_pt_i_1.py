@@ -195,13 +195,13 @@ def get_params_dict(auto_dir, num_nodes):
         
 def get_opt_params_dict(df_cur, init_params_dict,fixed_params_dict):
     df_val = filter_df(df_cur, fixed_params_dict)
-    a_init_prev = init_params_dict['a']; b_init_prev = init_params_dict['b']; A2 = init_params_dict['A2']
+    a_init_prev = init_params_dict['a']; b_init_prev = init_params_dict['b']; A1 = init_params_dict['A1']
     while True:
         E_list=[];ab_list=[]
         for a in [a_init_prev-0.1,a_init_prev,a_init_prev+0.1]:
             for b in [b_init_prev-0.1,b_init_prev,b_init_prev+0.1]:
                 a = np.round(a,1);b = np.round(b,1)
-                df_val_ab = df_val[(df_val['a']==a)&(df_val['b']==b)&(df_val['A2']==A2)&(df_val['status']=='Done')]
+                df_val_ab = df_val[(df_val['a']==a)&(df_val['b']==b)&(df_val['A1']==A1)&(df_val['status']=='Done')]
                 if len(df_val_ab)==0:
                     return False,{'a':a,'b':b}
                 ab_list.append([a,b]);E_list.append(df_val_ab['E'].values[0])
