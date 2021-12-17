@@ -6,7 +6,7 @@ import time
 import sys
 from tqdm import tqdm
 sys.path.append(os.path.join(os.environ['HOME'],'Working/interaction/'))
-from make_step3_pt import exec_gjf##計算した点のxyzfileを出す
+from make_step3_pt3 import exec_gjf##計算した点のxyzfileを出す
 from vdw_6_xyz import vdw_R##同様
 from utils import get_E
 import argparse
