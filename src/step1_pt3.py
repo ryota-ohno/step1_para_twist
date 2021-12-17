@@ -225,6 +225,7 @@ def filter_df(df, dict_filter):
             query.append('{} == "{}"'.format(k,v))
         else:
             query.append('{} == {}'.format(k,v))
+    df['A2']=df['A2'].astype(float)
     df_filtered = df.query(' and '.join(query))
     return df_filtered
 
