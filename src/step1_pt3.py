@@ -91,7 +91,7 @@ def listen(auto_dir,monomer_name,num_nodes,isTest):##args自体を引数に取�
     df_queue = df_E.loc[df_E['status']=='InProgress',['machine_type','file_name']]
     machine_type_list = df_queue['machine_type'].values.tolist()
     len_queue = len(df_queue)
-    maxnum_machine2 = 1#int(num_nodes/2) ##多分俺のために空けていてくださったので2 3にする
+    maxnum_machine2 = 2#int(num_nodes/2) ##多分俺のために空けていてくださったので2 3にする
     
     for idx,row in zip(df_queue.index,df_queue.values):
         machine_type,file_name = row
@@ -103,7 +103,7 @@ def listen(auto_dir,monomer_name,num_nodes,isTest):##args自体を引数に取�
             continue
         else:
             len_queue-=1;machine_type_list.remove(machine_type)
-            Et1=float(E_list[0]);Et2=float(E_list[1]);Ep1=float(E_list[2]);Ep2=float(E_list[2])##6分子に向けてep作成　ep1:b ep2:a
+            Et1=float(E_list[0]);Et2=float(E_list[1]);Ep1=float(E_list[2]);Ep2=float(E_list[3])##6分子に向けてep作成　ep1:b ep2:a
             E = 2*(Et1+Et2)+Ep1+Ep2##エネルギーの値も変える
             df_E.loc[idx, ['E_t1','E_t2','E_p1','E_p2','E','status']] = [Et1,Et2,Ep1,Ep2,E,'Done']
             df_E.to_csv(auto_csv,index=False)
